@@ -1,0 +1,6 @@
+{
+  "name": "AgroFlow: Smart Irrigation & Farm Monitor",
+  "description": "Real-time IoT dashboard for smart farm monitoring with soil moisture tracking, weather integration, and an intelligent recommendation engine for optimized irrigation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-mono: "JetBrains Mono", "Consolas", "Monaco", "Courier New", monospace;
+  
+  --color-bg: var(--bg);
+  --color-sidebar: var(--sidebar);
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-success: #059669;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-edge: var(--edge);
+  --color-card: var(--card);
+}
+
+@layer base {
+  :root {
+    --bg: rgba(253, 253, 253, 0.9);
+    --sidebar: #064e3b;
+    --primary: #10b981;
+    --primary-soft: #ecfdf5;
+    --text-main: #064e22;
+    --text-muted: #334155;
+    --edge: #e2e8f0;
+    --card: rgba(255, 255, 255, 0.85);
+    --radial-opacity: 0.08;
+    --bg-overlay: rgba(255, 255, 255, 0.6);
+    --bg-image: url('https://picsum.photos/seed/farmview/1920/1080?grayscale');
+  }
+
+  .dark {
+    --bg: rgba(2, 6, 23, 0.94);
+    --sidebar: #010409;
+    --primary: #34d399;
+    --primary-soft: #064e3b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --edge: #1e293b;
+    --card: rgba(15, 23, 42, 0.85);
+    --radial-opacity: 0.2;
+    --bg-overlay: rgba(2, 6, 23, 0.8);
+    --bg-image: url('https://picsum.photos/seed/farmview/1920/1080?blur=4');
+  }
+
+  body {
+    @apply text-text-main font-sans min-h-screen relative overflow-x-hidden transition-colors duration-500;
+    background-color: var(--bg-overlay);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    transition: background-image 1s ease-in-out;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: 
+      radial-gradient(at 0% 0%, hsla(160, 84%, 39%, var(--radial-opacity)) 0, transparent 60%), 
+      radial-gradient(at 100% 0%, hsla(200, 80%, 40%, var(--radial-opacity)) 0, transparent 60%),
+      linear-gradient(to bottom, var(--bg-overlay), var(--bg-overlay));
+    backdrop-filter: blur(40px);
+    transition: background 0.5s ease-in-out;
+  }
+}
